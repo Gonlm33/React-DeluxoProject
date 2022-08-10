@@ -2,6 +2,7 @@ import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount"
 import React, {useState} from 'react';
 // import swal from "sweetalert";
+import { Link } from 'react-router-dom';
 
 export const ItemDetail = ({ data }) => {
   const [goToCart, setGoToCart] = useState(false)
@@ -24,7 +25,7 @@ export const ItemDetail = ({ data }) => {
                 <h1>{data.title}</h1>
                 {
                   goToCart
-                  ? <link to='/cart'>Terminar compra</link>
+                  ? <Link to='/cart'>Terminar compra</Link>
                   : <ItemCount initial={1} stock={10} onAdd={onAdd}  />
                 }
                 
