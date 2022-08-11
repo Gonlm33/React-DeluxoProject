@@ -3,9 +3,11 @@ import ItemCount from "../ItemCount/ItemCount"
 import React, {useState} from 'react';
 // import swal from "sweetalert";
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../Context/CartContext';
 
 export const ItemDetail = ({ data }) => {
   const [goToCart, setGoToCart] = useState(false)
+  const { addProduct } = useCartContext();
 
   const onAdd = (quantity) => {
     // swal({
@@ -15,6 +17,7 @@ export const ItemDetail = ({ data }) => {
     //   button: "Aceptar",
     // });
     setGoToCart(true);
+    addProduct(data, quantity);
     }
 
   return (
