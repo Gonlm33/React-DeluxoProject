@@ -23,10 +23,14 @@ export const ItemListContainer = ({ texto }) => {
     if (categoriaId) {
       const queryFilter = query(queryCollection, where('category', '==', categoriaId))
       getDocs(queryFilter)
-        .then(res => setData(res.docs.map(product => ({ id: product.id, ...res.data() }))))
+      .then(res => setData(res.docs.map(product => {
+        const value = product.data()
+        return {id: product.id, ...value} })))
       } else {
         getDocs(queryCollection)
-        .then(res => setData(res.docs.map(product => ({ id: product.id, ...res.data() }))))
+        .then(res => setData(res.docs.map(product => {
+          const value = product.data()
+          return {id: product.id, ...value} })))
       }
     }, [categoriaId])
 
